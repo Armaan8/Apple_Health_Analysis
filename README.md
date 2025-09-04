@@ -70,7 +70,7 @@ This project demonstrates:
 
 - Python: pandas, numpy, matplotlib  
 - Machine Learning: scikit-learn (Random Forest, PCA, KMeans)  
-- Visualization: matplotlib (heatmaps, scatter, violin, bar/line plots), Tableau (planned)  
+- Visualization: matplotlib (heatmaps, scatter, violin, bar/line plots) 
 
 ---
 
