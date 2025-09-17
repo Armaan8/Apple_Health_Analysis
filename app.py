@@ -11,24 +11,24 @@ from utils.analysis_functions import calculate_kpis, remove_outliers_iqr
 # Page configuration
 st.set_page_config(
     page_title="Health Data Analytics Dashboard",
-    page_icon="🏥",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # Main dashboard page
 def main():
-    st.title("🏥 Personal Health Data Analytics Dashboard")
+    st.title("Personal Health Data Analytics Dashboard")
     st.markdown("---")
     
     # Load data
     try:
         df = load_health_data()
         if df is not None:
-            st.success(f"✅ Health data loaded successfully! ({len(df)} records)")
+            st.success(f"Health data loaded successfully!")
             
             # Data summary in sidebar
-            st.sidebar.header("📊 Data Overview")
+            st.sidebar.header("Data Overview")
             data_summary = get_data_summary(df)
             
             col1, col2 = st.sidebar.columns(2)
@@ -76,7 +76,7 @@ def main():
             st.markdown("---")
             
             # Recent trends section
-            st.header("📈 Recent Activity Trends")
+            st.header("Activity Trends in Dec 2024")
             
             # Get last 30 days of data
             recent_df = df.tail(30).copy()
@@ -89,7 +89,7 @@ def main():
                     recent_df, 
                     x='date', 
                     y='StepCount',
-                    title="Daily Steps (Last 30 Days)",
+                    title="Daily Steps",
                     markers=True
                 )
                 fig_steps.update_layout(height=300)
@@ -101,7 +101,7 @@ def main():
                     recent_df, 
                     x='date', 
                     y='RestingHeartRate',
-                    title="Resting Heart Rate (Last 30 Days)",
+                    title="Resting Heart Rate",
                     markers=True,
                     color_discrete_sequence=['red']
                 )
@@ -110,20 +110,20 @@ def main():
             
             # Navigation guide
             st.markdown("---")
-            st.header("🧭 Dashboard Navigation")
+            st.header("Dashboard Navigation")
             
             col1, col2, col3 = st.columns(3)
             
             with col1:
                 st.markdown("""
-                **📊 Activity Analysis**
+                **Activity Analysis**
                 - Step count patterns
                 - Energy expenditure
                 - Exercise time trends
                 """)
                 
                 st.markdown("""
-                **❤️ Heart Rate Analysis**
+                **Heart Rate Analysis**
                 - Resting HR trends
                 - HRV analysis
                 - Fitness indicators
@@ -131,14 +131,14 @@ def main():
                 
             with col2:
                 st.markdown("""
-                **🌅 Lifestyle Analysis**
+                **Lifestyle Analysis**
                 - Daylight exposure
                 - Seasonal patterns
                 - Audio exposure
                 """)
                 
                 st.markdown("""
-                **🔮 Predictive Models**
+                **Predictive Models**
                 - ML-based predictions
                 - Model performance
                 - Future trends
@@ -146,26 +146,26 @@ def main():
                 
             with col3:
                 st.markdown("""
-                **🔗 Relationship Analysis**
+                **Relationship Analysis**
                 - Metric correlations
                 - PCA analysis
                 - Clustering insights
                 """)
                 
                 st.markdown("""
-                **🚶 Walking Analysis**
+                **Walking Analysis**
                 - Gait stability
                 - Mobility metrics
                 - Asymmetry detection
                 """)
             
-            st.info("👈 Use the sidebar to navigate between different analysis sections!")
+            st.info("Use the sidebar to navigate between different analysis sections!")
             
         else:
-            st.error("❌ Could not load health data. Please ensure 'health_armaan.csv' is available.")
+            st.error("Could not load health data. Please ensure 'health_armaan.csv' is available.")
             
     except Exception as e:
-        st.error(f"❌ Error loading data: {str(e)}")
+        st.error(f"Error loading data: {str(e)}")
         st.info("Please ensure the 'health_armaan.csv' file is in the correct location.")
 
 if __name__ == "__main__":
